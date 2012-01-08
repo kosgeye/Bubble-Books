@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   # GET /books
   # GET /books.json
+  before_filter :authenticate, :only => [:create, :destroy, :edit, :new, :update]
   def index
     @books = Book.all
 
