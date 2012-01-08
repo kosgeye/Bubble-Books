@@ -1,4 +1,6 @@
 BooksBubble::Application.routes.draw do
+  resources :books
+
   get "sessions/new"
 
   get "users/new"
