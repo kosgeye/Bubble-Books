@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 gem "nokogiri"
 gem "rack", "~>1.1"
-gem "rspec", :require => "spec"
+gem "rspec", :require => false
 
 gem 'rails', '3.1.1'
 group :development do
