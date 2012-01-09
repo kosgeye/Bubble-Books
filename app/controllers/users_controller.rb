@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
 before_filter :correct_user, :only => [:edit, :update]
-before_filter :admin_user,   :only => :destroy
+
 
   def index
     @title = "All users"
@@ -22,8 +22,8 @@ before_filter :admin_user,   :only => :destroy
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "Welcome to BC Books!"
+      redirect_to root_path
     else
       @title = "Sign up"
       render 'new'
@@ -57,6 +57,10 @@ before_filter :admin_user,   :only => :destroy
     end
 	def admin_user
       redirect_to(root_path) unless current_user.admin?
+    end
+	def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
     end
   
 end

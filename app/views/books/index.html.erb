@@ -4,8 +4,8 @@
   <tr>
     <th>Title</th>
     <th>Price</th>
-    <th>Book class</th>
-    <th>User</th>
+    <th>Class</th>
+    <th>Contact Info</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,14 +16,15 @@
     <td><%= book.title %></td>
     <td><%= book.price %></td>
     <td><%= book.book_class %></td>
-    <td><%= book.user_id %></td>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Contact Seller', book %></td>
+	<% if current_user?(book.user) %>
+	<td><%= link_to "delete", book, :method => :delete,
+                                     :confirm => "You sure?" %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Book', new_book_path %>
+<%= link_to 'Sell Book', new_book_path %>

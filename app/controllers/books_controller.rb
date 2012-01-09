@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
   # GET /books
   # GET /books.json
-  before_filter :authenticate, :only => [:create, :destroy, :edit, :new, :update]
+  before_filter :authenticate, :only => [:create, :destroy, :edit, :new, :update, :show]
+  before_filter :authorized_user, :only => :destroy
   def index
-    @books = Book.all
+    @books = Book.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,8 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find params[:id], :include => [:user]
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +43,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(params[:book])
+    @book = current_user.books.build(params[:book])
 
     respond_to do |format|
       if @book.save
@@ -73,12 +75,17 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-
-    respond_to do |format|
-      format.html { redirect_to books_url }
-      format.json { head :ok }
-    end
+    Book.find(params[:id]).destroy
+    flash[:success] = "Book destroyed."
+    redirect_to books_path
   end
+  private
+  def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+   end
+   def authorized_user
+      @book = current_user.book.find_by_id(params[:id])
+      redirect_to root_path if @book.nil?
+    end
 end
