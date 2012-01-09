@@ -1,4 +1,7 @@
 source 'http://rubygems.org'
+gem "nokogiri"
+gem "rack", "~>1.1"
+gem "rspec", :require => "spec"
 
 gem 'rails', '3.1.1'
 group :development do
@@ -12,7 +15,7 @@ end
 gem 'sqlite3', '1.3.4'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
-gem 'activerecord-postgresql-adapter'
+
 
 group :development do
   gem 'rspec-rails', '2.6.1'
