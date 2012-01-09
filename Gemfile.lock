@@ -57,7 +57,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.4)
-    mysql (2.8.1-x86-mingw32)
+    mysql2 (0.2.18-x86-mingw32)
     nokogiri (1.5.0-x86-mingw32)
     pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
@@ -136,7 +136,7 @@ DEPENDENCIES
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
   jquery-rails
-  mysql
+  mysql2
   nokogiri
   pg
   rack (~> 1.1)
