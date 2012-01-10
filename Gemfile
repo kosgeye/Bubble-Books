@@ -3,6 +3,7 @@ gem "nokogiri"
 gem "rack", "~>1.1"
 gem "rspec", :require => false
 gem 'sqlite3'
+gem 'pg'
 
 gem 'rails', '3.1.1'
 group :development do
@@ -12,9 +13,7 @@ end
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-group :production do
-gem 'pg'
-end
+
 
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
