@@ -2,8 +2,9 @@ source 'http://rubygems.org'
 gem "nokogiri"
 gem "rack", "~>1.1"
 gem "rspec", :require => false
-gem 'sqlite3'
-gem 'pg'
+gem 'foreman'
+gem 'thin'
+
 
 gem 'rails', '3.1.1'
 group :development do
@@ -20,6 +21,7 @@ gem 'will_paginate', '3.0.pre2'
 
 
 group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails', '2.6.1'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
@@ -28,6 +30,9 @@ end
 group :test do
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
+end
+group :production do
+gem 'pg'
 end
 
 
