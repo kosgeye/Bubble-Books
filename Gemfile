@@ -3,7 +3,7 @@ gem "nokogiri"
 gem "rack", "~>1.1"
 gem "rspec", :require => false
 gem 'foreman'
-gem 'thin'
+
 
 
 gem 'rails', '3.1.1'
