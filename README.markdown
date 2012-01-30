@@ -1,0 +1,1 @@
+I am developing a site that students from Berea College can use to sell or buy books from each other. I am excited about this project because it may end up saving a lot of money for my peers. It will also help me improve my grasp of Ruby on Rails. Lastly, it is a portfolio building oppurtunity!

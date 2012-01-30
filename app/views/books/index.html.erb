@@ -1,0 +1,30 @@
+<h1>Listing books</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Class</th>
+    <th>Contact Info</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @books.each do |book| %>
+  <tr>
+    <td><%= book.title %></td>
+    <td><%= book.price %></td>
+    <td><%= book.book_class %></td>
+    <td><%= link_to 'Contact Seller', book %></td>
+	<% if current_user?(book.user) %>
+	<td><%= link_to "delete", book, :method => :delete,
+                                     :confirm => "You sure?" %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Sell Book', new_book_path %>
